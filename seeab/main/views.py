@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Message, Game
 from .services import register_player, finish_a_room, get_game_from_db, start_room
-
+from seeab.settings import host
 
 def room_view(request):
     """ Function create Room and register Player or Opponent """
@@ -37,7 +37,8 @@ def play_view(request, room_code):
                'my_ships': player[2][1],
                'username': username,
                'sent_messages': sent_messages,
-               'us_cells': player[1]
+               'us_cells': player[1],
+               'host': host
                }
 
     return render(request, 'main/game.html', context)

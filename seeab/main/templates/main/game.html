@@ -215,8 +215,6 @@
     <div class="btn"><a href="{% url 'quit' room_code %}"><button>New game</button></a></div>
   </div>
 
-
-
     {{ room_code|json_script:"json_room_code" }}
     {{ username|json_script:"json_username" }}
     {{ enemy_ships|json_script:"enemy_ships" }}
@@ -233,7 +231,7 @@
     let opponent_count = 0
     let resultBox = document.querySelector(".result-box")
     let playBoard = document.querySelector(".play-board")
-    let socket = new WebSocket('ws://0.0.0.0:8000/ws/game/' + room_code)
+    let socket = new WebSocket('ws://' + '{{ host }}' + '/ws/game/' + room_code)
     let elementArray = document.querySelectorAll('.space')
     let allBox = document.querySelectorAll("section span")
     let selectBox = document.querySelector(".select-box")
@@ -323,6 +321,7 @@
         clickedBox(elem)
       });
     }
+
     // Receive message from server and put New message //
     socket.onmessage = function (e) {
       let data = JSON.parse(e.data)

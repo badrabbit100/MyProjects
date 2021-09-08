@@ -7,7 +7,10 @@ SECRET_KEY = 'django-insecure-khz6sc@1@@+dsw5k@g8c#2@3e-4ysmraj0r87#*qx+#=t#$66%
 # DEBUG can be True/False or 1/0
 DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+# Host and Port of your local machine
+host = '192.168.0.11:8000'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,7 +66,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('172.17.0.2', 6379)],
+            "hosts": [('172.17.0.2.', 6379)],
         },
     },
 }
@@ -82,6 +85,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
