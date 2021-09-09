@@ -8,7 +8,8 @@ This is application to demonstrate how to use Django Channels and websocket to c
 #### 1. Download repository and open the main folder
 Please download repository and save it. Than follow the project folder
 
-`https://github.com/badrabbit100/public.git`
+`git clone https://github.com/badrabbit100/public.git`
+
 `cd public/seeab`
 
 #### 2. Start Redis server in docker using next command:
