@@ -53,7 +53,7 @@ To open it please use the latest version of Google Chrome
 
 App will be located here http://0.0.0.0:8000/ from the host machine
 
-From local machines use $HOST-url from seeab.settings.py (in my case http://192.168.0.11:8000)
+From local network use $HOST-url from seeab.settings.py (in my case http://192.168.0.11:8000)
 
 
 **Usage:**
