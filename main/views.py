@@ -4,6 +4,7 @@ from .models import Message, Game
 from .services import register_player, finish_a_room, get_game_from_db, start_room
 from seeab.settings import host
 
+
 def room_view(request):
     """ Function create Room and register Player or Opponent """
 
