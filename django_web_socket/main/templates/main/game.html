@@ -1,0 +1,378 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <meta charset="UTF-8">
+    <title>Sea Battle</title>
+    <link rel="stylesheet" href="{% static 'main/css/game.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/chat.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <!-- Chat Box -->
+  <div class="container">
+    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-right:200px;">
+        <div class="col-xs-12 col-md-12">
+        	<div class="panel panel-default">
+                <div class="panel-heading top-bar">
+                    <div class="col-md-8 col-xs-8">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3>
+                    </div>
+                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+                        <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1"></span></a>
+                    </div>
+                </div>
+                <div class="panel-body msg_container_base" id="chat_box" style="overflow-y: scroll;">
+                    <div class="row msg_container base_sent">
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_sent">
+                                Hi, you can talk here!
+                                <time datetime="2009-11-13T20:00">Admin</time>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                        </div>
+                    </div>
+                    {% for message in sent_messages %}
+                        <div class="row msg_container base_sent">
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_sent">
+                              {{message.message}}
+                                <time datetime="2009-11-13T20:00">{{message.username}}</time>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." id="chat_messages"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" id="btn-message-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+    		</div>
+        </div>
+    </div>
+
+</div>
+  <!-- select box -->
+  <div class="select-box">
+    <header>Sea Battle</header>
+    <div class="content">
+      <div class="title">Are you ready?</div>
+      <div class="options">
+        <button class="playerX">Ready!</button>
+      </div>
+    </div>
+  </div>
+  <!-- playboard section -->
+  <div class="play-board">
+    <div class="details">
+      <div class="players">
+        <span style="color: blue">Sea Battle</span>
+      </div>
+    </div>
+    <div class="play-area">
+      <section>
+        <span data-cell="1" class="space" id="1"></span>
+        <span data-cell="2" class="space" id="2"></span>
+        <span data-cell="3" class="space" id="3"></span>
+        <span data-cell="4" class="space" id="4"></span>
+        <span data-cell="5" class="space" id="5"></span>
+        <span data-cell="6" class="space" id="6"></span>
+        <span data-cell="7" class="space" id="7"></span>
+        <span data-cell="8" class="space" id="8"></span>
+        <span data-cell="9" class="space" id="9"></span>
+        <span data-cell="10" class="space" id="10"></span>
+      </section>
+      <section>
+        <span data-cell="11" class="space" id="11"></span>
+        <span data-cell="12" class="space" id="12"></span>
+        <span data-cell="13" class="space" id="13"></span>
+        <span data-cell="14" class="space" id="14"></span>
+        <span data-cell="15" class="space" id="15"></span>
+        <span data-cell="16" class="space" id="16"></span>
+        <span data-cell="17" class="space" id="17"></span>
+        <span data-cell="18" class="space" id="18"></span>
+        <span data-cell="19" class="space" id="19"></span>
+        <span data-cell="20" class="space" id="20"></span>
+      </section>
+      <section>
+        <span data-cell="21" class="space" id="21"></span>
+        <span data-cell="22" class="space" id="22"></span>
+        <span data-cell="23" class="space" id="23"></span>
+        <span data-cell="24" class="space" id="24"></span>
+        <span data-cell="25" class="space" id="25"></span>
+        <span data-cell="26" class="space" id="26"></span>
+        <span data-cell="27" class="space" id="27"></span>
+        <span data-cell="28" class="space" id="28"></span>
+        <span data-cell="29" class="space" id="29"></span>
+        <span data-cell="30" class="space" id="30"></span>
+      </section>
+      <section>
+        <span data-cell="31" class="space" id="31"></span>
+        <span data-cell="32" class="space" id="32"></span>
+        <span data-cell="33" class="space" id="33"></span>
+        <span data-cell="34" class="space" id="34"></span>
+        <span data-cell="35" class="space" id="35"></span>
+        <span data-cell="36" class="space" id="36"></span>
+        <span data-cell="37" class="space" id="37"></span>
+        <span data-cell="38" class="space" id="38"></span>
+        <span data-cell="39" class="space" id="39"></span>
+        <span data-cell="40" class="space" id="40"></span>
+      </section>
+      <section>
+        <span data-cell="41" class="space" id="41"></span>
+        <span data-cell="42" class="space" id="42"></span>
+        <span data-cell="43" class="space" id="43"></span>
+        <span data-cell="44" class="space" id="44"></span>
+        <span data-cell="45" class="space" id="45"></span>
+        <span data-cell="46" class="space" id="46"></span>
+        <span data-cell="47" class="space" id="47"></span>
+        <span data-cell="48" class="space" id="48"></span>
+        <span data-cell="49" class="space" id="49"></span>
+        <span data-cell="50" class="space" id="50"></span>
+      </section>
+      <section>
+        <span data-cell="51" class="space" id="51"></span>
+        <span data-cell="52" class="space" id="52"></span>
+        <span data-cell="53" class="space" id="53"></span>
+        <span data-cell="54" class="space" id="54"></span>
+        <span data-cell="55" class="space" id="55"></span>
+        <span data-cell="56" class="space" id="56"></span>
+        <span data-cell="57" class="space" id="57"></span>
+        <span data-cell="58" class="space" id="58"></span>
+        <span data-cell="59" class="space" id="59"></span>
+        <span data-cell="60" class="space" id="60"></span>
+      </section>
+      <section>
+        <span data-cell="61" class="space" id="61"></span>
+        <span data-cell="62" class="space" id="62"></span>
+        <span data-cell="63" class="space" id="63"></span>
+        <span data-cell="64" class="space" id="64"></span>
+        <span data-cell="65" class="space" id="65"></span>
+        <span data-cell="66" class="space" id="66"></span>
+        <span data-cell="67" class="space" id="67"></span>
+        <span data-cell="68" class="space" id="68"></span>
+        <span data-cell="69" class="space" id="69"></span>
+        <span data-cell="70" class="space" id="70"></span>
+      </section>
+      <section>
+        <span data-cell="71" class="space" id="71"></span>
+        <span data-cell="72" class="space" id="72"></span>
+        <span data-cell="73" class="space" id="73"></span>
+        <span data-cell="74" class="space" id="74"></span>
+        <span data-cell="75" class="space" id="75"></span>
+        <span data-cell="76" class="space" id="76"></span>
+        <span data-cell="77" class="space" id="77"></span>
+        <span data-cell="78" class="space" id="78"></span>
+        <span data-cell="79" class="space" id="79"></span>
+        <span data-cell="80" class="space" id="80"></span>
+      </section>
+      <section>
+        <span data-cell="81" class="space" id="81"></span>
+        <span data-cell="82" class="space" id="82"></span>
+        <span data-cell="83" class="space" id="83"></span>
+        <span data-cell="84" class="space" id="84"></span>
+        <span data-cell="85" class="space" id="85"></span>
+        <span data-cell="86" class="space" id="86"></span>
+        <span data-cell="87" class="space" id="87"></span>
+        <span data-cell="88" class="space" id="88"></span>
+        <span data-cell="89" class="space" id="89"></span>
+        <span data-cell="90" class="space" id="90"></span>
+      </section>
+      <section>
+        <span data-cell="91" class="space" id="91"></span>
+        <span data-cell="92" class="space" id="92"></span>
+        <span data-cell="93" class="space" id="93"></span>
+        <span data-cell="94" class="space" id="94"></span>
+        <span data-cell="95" class="space" id="95"></span>
+        <span data-cell="96" class="space" id="96"></span>
+        <span data-cell="97" class="space" id="97"></span>
+        <span data-cell="98" class="space" id="98"></span>
+        <span data-cell="99" class="space" id="99"></span>
+        <span data-cell="100" class="space" id="100"></span>
+      </section>
+
+    </div>
+  </div>
+  <!-- result box -->
+  <div class="btn">
+    <a href="{% url 'quit' room_code %}"><button style="background: brown" id="quit">Quit</button></a></div>
+  <div class="result-box">
+    <div class="won-text">Game is over</div>
+    <div class="btn"><a href="{% url 'quit' room_code %}"><button>New game</button></a></div>
+  </div>
+
+    {{ room_code|json_script:"json_room_code" }}
+    {{ username|json_script:"json_username" }}
+    {{ enemy_ships|json_script:"enemy_ships" }}
+    {{ us_cells|json_script:"us_cells" }}
+    {{ my_ships|json_script:"my_ships" }}
+
+  <script>
+    let room_code = JSON.parse(document.getElementById('json_room_code').textContent)
+    let username = JSON.parse(document.getElementById('json_username').textContent)
+    let enemy_ships = JSON.parse(document.getElementById('enemy_ships').textContent)
+    let used_cells = {{ us_cells }}
+    let my_ships = JSON.parse(document.getElementById('my_ships').textContent)
+    let creator_count = 0
+    let opponent_count = 0
+    let resultBox = document.querySelector(".result-box")
+    let playBoard = document.querySelector(".play-board")
+    let socket = new WebSocket('ws://' + '{{ host }}' + '/ws/game/' + room_code)
+    let elementArray = document.querySelectorAll('.space')
+    let allBox = document.querySelectorAll("section span")
+    let selectBox = document.querySelector(".select-box")
+    let selectBtnX = selectBox.querySelector(".options")
+
+    function scrollToBottom() {
+        let objDiv =document.getElementById("chat_box")
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    function updateCount(id_cell) {
+      if (my_ships.includes(parseInt(id_cell))) {
+          creator_count++;
+      } else if (enemy_ships.includes(parseInt(id_cell))) {
+          opponent_count++;
+      }
+    }
+
+    function checkWin(creator_count, opponent_count){
+      if (opponent_count === 10) {
+        setTimeout(()=>{
+              resultBox.classList.add("show");
+              playBoard.classList.remove("show");
+          }, 100);
+      } else if (creator_count === 10) {
+        setTimeout(()=>{
+              resultBox.classList.add("show");
+              playBoard.classList.remove("show");
+          }, 100);
+      }
+    }
+
+    function clickedBox(id_cell){
+      let success_image = '<div class="ship"><img class="crushed" src="{% static 'main/img/enemyship.png' %}"></div>';
+      let missed_image =  '<div class="ship"><img class="crushed" src="{% static 'main/img/2.jpg' %}"></div>';
+      if(enemy_ships.includes(parseInt(id_cell))) {
+          elementArray[parseInt(id_cell)-1].innerHTML = success_image
+      }else{
+          elementArray[parseInt(id_cell)-1].innerHTML = missed_image
+      }
+    }
+
+    selectBtnX.onclick = ()=>{
+        selectBox.classList.add("hide");
+        playBoard.classList.add("show");
+    }
+
+    scrollToBottom();
+
+    window.onload = ()=>{
+    for (let i = 0; i < allBox.length; i++) {
+       allBox[i].setAttribute("onclick", "clickedBox(this)");
+      }
+    }
+
+    elementArray.forEach(function(elem){
+      elem.addEventListener("click", function (event){
+        let id_cell = event.path[0].getAttribute('data-cell');
+        clickedBox(id_cell);
+        updateCount(id_cell);
+        checkWin(creator_count);
+        let data = {
+          'type': 'game',
+          'player': username,
+          'index': id_cell,
+          'creator_count': creator_count,
+          'opponent_count': opponent_count,
+          'room_code': room_code
+        };
+        socket.send(JSON.stringify({data}));
+      })
+    })
+
+    // Open Socket //
+    socket.onopen = function () {
+      console.log('Socket Connected')
+
+      elementArray.forEach(function(elem) {
+        let id_cell = elem.getAttribute('data-cell')
+        let my_ship = '<div class="ship"><img class="crushed" src="{% static 'main/img/myship.png' %}"></div>'
+        if (my_ships.includes(parseInt(id_cell))) {
+          elementArray[parseInt(id_cell)-1].innerHTML = my_ship
+        }
+      })
+
+      used_cells.forEach(function(elem) {
+        clickedBox(elem)
+      });
+    }
+
+    // Receive message from server and put New message //
+    socket.onmessage = function (e) {
+      let data = JSON.parse(e.data)
+      let html = ('<div class="row msg_container base_sent">\n' +
+              '                        <div class="col-md-10 col-xs-10">\n' +
+              '                            <div class="messages msg_sent">\n' +
+              '                                ' + data.payload.message +
+              '                                <time datetime="2009-11-13T20:00">' + data.payload.username + '</time>\n' +
+              '                            </div>\n' +
+              '                        </div>\n' +
+              '                        <div class="col-md-2 col-xs-2 avatar">\n' +
+              '                            <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">\n' +
+              '                        </div>\n' +
+              '                        \n' +
+              '                    </div>')
+
+      if (data.payload.type === 'game'){
+          clickedBox(data.payload.index)
+          checkWin(data.payload.creator_count, data.payload.opponent_count)
+      }else if (data.payload.type === 'message') {
+          document.querySelector('#chat_box').innerHTML += html
+          window.scrollTo(0,document.querySelector(".msg_container_base").scrollHeight)
+      }
+      scrollToBottom();
+
+    }
+
+    // Send Message to Server //
+    document.querySelector('#btn-message-chat').onclick = function (e) {
+      const messageInputDom = document.querySelector('#chat_messages');
+      const message = messageInputDom.value;
+      if (message === '') {
+        alert('Please enter message')
+      } else {
+        let data = {
+          'type': 'message',
+          'message': message,
+          'username': username,
+          'room_code': room_code
+        }
+        socket.send(JSON.stringify({data}));
+        messageInputDom.value = '';
+      }
+    }
+
+    // Function - Close Socket
+    socket.onclose = function (e) {
+      console.log('Socket closed. See you in next life!')
+    }
+
+  </script>
+</body>
+</html>
+
